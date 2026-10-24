@@ -7,11 +7,15 @@ Commercial Registry (Γενικό Εμπορικό Μητρώο, GEMI).
 > the API's JSON payloads directly. Typed response models and a CLI may be
 > added in later releases.
 
-## Install
+## Install from source
 
 ```shell
-python -m pip install gemi-opendata-python
+git clone https://github.com/takispanag/gemi-opendata-python.git
+cd gemi-opendata-python
+python -m pip install -e .
 ```
+
+This project has not been published to PyPI yet.
 
 ## Usage
 
@@ -26,7 +30,7 @@ from gemi_opendata import GemiClient
 
 client = GemiClient(api_key=os.environ["GEMI_OPENDATA_API_KEY"])
 
-matches = client.search_companies(afm="000000000", resultsSize=10)
+matches = client.search_companies(afm="YOUR_AFM_HERE", resultsSize=10)
 company = client.get_company(123456789000)
 documents = client.get_company_documents(123456789000)
 
