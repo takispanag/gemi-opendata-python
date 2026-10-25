@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.27"]
 build-backend = "hatchling.build"
 
 [project]
@@ -14,7 +14,6 @@ dependencies = ["httpx>=0.27,<1"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
@@ -22,6 +21,25 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
 ]
 
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "build>=1,<2", "ruff>=0.11,<1"]
+
+[project.urls]
+Repository = "https://github.com/takispanag/gemi-opendata-python"
+Documentation = "https://github.com/takispanag/gemi-opendata-python/blob/main/docs/api.md"
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/gemi_opendata"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
 
